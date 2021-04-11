@@ -15,9 +15,11 @@ object MainEntry {
     val a = spark.read.option("header", "true").csv("emp_data1.csv").alias("a"); 
     a.show()
     
-    a.createOrReplaceTempView("emp_data1")
-    val sqlDF = spark.sql("SELECT * FROM emp_data1 where Marks > 90")
-    sqlDF.show()
+    val dup_df = a.groupBy($"ID",$"NAme",$"Marks").count.filter($"count" > 1).show()
+    
+    //a.createOrReplaceTempView("emp_data1")
+    //val sqlDF = spark.sql("SELECT * FROM emp_data1 where Marks > 90")
+    //sqlDF.show()
     
     val b = spark.read.option("header", "true").csv("emp_data2.csv").alias("b"); 
     //b.show()
