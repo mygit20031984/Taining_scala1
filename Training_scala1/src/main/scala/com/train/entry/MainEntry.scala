@@ -1,6 +1,7 @@
 package com.train.entry
 
 import com.train.session.DemoSparkSession
+import com.train.entry.read_file
 
 object MainEntry {
   
@@ -12,6 +13,10 @@ object MainEntry {
     import spark.implicits._ 
     
     
+    val DF1 = read_file.read_csv("emp_data1.csv")
+    
+    
+    /*
     val a = spark.read.option("header", "true").csv("emp_data1.csv").alias("a"); 
     a.show()
     
@@ -26,7 +31,7 @@ object MainEntry {
     
     //a.except(b).show()
     println("Finishing the entry point --------------->")
-    
+    */
   }
   
   
