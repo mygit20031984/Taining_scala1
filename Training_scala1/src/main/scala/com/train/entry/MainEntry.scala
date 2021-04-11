@@ -14,6 +14,15 @@ object MainEntry {
     
     
     val DF1 = read_file.read_csv("emp_data1.csv")
+    DF1.show()
+    
+    val DF2 = read_file.read_csv("emp_data2.csv")
+    DF2.show()
+    
+    DF1.dropDuplicates().show()
+    
+    DF1.except(DF2).show()
+    DF2.except(DF1).show()
     
     
     /*
@@ -29,8 +38,7 @@ object MainEntry {
     val b = spark.read.option("header", "true").csv("emp_data2.csv").alias("b"); 
     //b.show()
     
-    //a.except(b).show()
-    println("Finishing the entry point --------------->")
+     println("Finishing the entry point --------------->")
     */
   }
   
